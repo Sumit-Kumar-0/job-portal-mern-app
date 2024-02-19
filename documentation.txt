@@ -11,3 +11,14 @@
 
 3.  npm i bcrypt cloudinary cookie-parser cors dotenv express express-fileupload jsonwebtoken mongoose validator colors     
     nodemon concurrently morgan 
+
+    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDNjZjJkMzY4MzU1OWY3MGM0YTJhMyIsImlhdCI6MTcwODM3OTk0OSwiZXhwIjoxNzA4OTg0NzQ5fQ.RE2ucCQ-QiZ4ebVuT2p8dFk0jr1utDSrkFghJi3CP1M
+
+
+
+    
+
+
+
+    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDM4NTJiYzA4ZmY4M2JhNWNkMGE4NSIsImlhdCI6MTcwODM2MTAwMywiZXhwIjoxNzA4OTY1ODAzfQ.cys01V-iUozdwiOP4cUrG-uiwOLnBCDWohOByrOZeAA
+
