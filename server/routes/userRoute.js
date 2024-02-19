@@ -3,6 +3,7 @@ import {
   loginController,
 } from "../controllers/userController.js";
 import express from "express";
+import { isAuthenticated } from "../middlewares/userAuthMiddleware.js";
 
 const router = express.Router();
 
@@ -10,6 +11,6 @@ const router = express.Router();
 router.post("/register", registerController);
 
 // login
-router.post("/login", loginController);
+router.post("/login", isAuthenticated, loginController);
 
 export default router;

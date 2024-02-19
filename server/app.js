@@ -5,6 +5,7 @@ import morgan from "morgan";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
+import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 
 // Create an instance of the Express application
 const app = express();
@@ -41,16 +42,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Configure file upload middleware
-app.use(fileUpload({
-  useTempFiles: true,
-  tempFileDir: "/tmp/"
-}));
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: "/tmp/",
+  })
+);
 
 // Log HTTP requests to the console for debugging
 app.use(morgan("dev"));
 
 // Route setup
 app.use("/api/user", userRoute);
+
+// Error handling middleware
+app.use(errorMiddleware);
 
 // Export the configured Express application
 export default app;
