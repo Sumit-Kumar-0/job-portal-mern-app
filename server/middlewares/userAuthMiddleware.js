@@ -3,12 +3,11 @@ import userModel from "../models/userModel.js";
 
 export const isAuthenticated = async (req, res, next) => {
   try {
-    const token = req.headers["authorization"];
-
+    const { token } = req.cookies;
     if (!token) {
       return res
         .status(401)
-        .json({ success: false, message: "User Not Authorized" });
+        .json({ success: false, message: "User Not Authorized!!!!!!!!" });
     }
 
     const decoded = JWT.verify(token, process.env.JWT_SECRET_KEY);
@@ -28,3 +27,4 @@ export const isAuthenticated = async (req, res, next) => {
       .json({ success: false, message: "Internal Server Error" });
   }
 };
+
