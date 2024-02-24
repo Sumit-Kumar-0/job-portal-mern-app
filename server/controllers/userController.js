@@ -14,9 +14,29 @@ export const registerController = async (req, res, next) => {
 
     // Check if the email is already in use
     const existingUser = await userModel.findOne({ email });
+    const existingUserByPhone = await userModel.findOne({ phone });
+
+    if (existingUser && existingUserByPhone && existingUser.role === role) {
+      throw new ErrorHandler("You are already registered please login!!.", 400);
+    }
+
+    if (existingUser && existingUser.phone === phone) {
+      throw new ErrorHandler(
+        "you are already registerd with this email and phone, please choose another!!",
+        400
+      );
+    }
+
     if (existingUser) {
       throw new ErrorHandler(
-        "Email address is already in use. Please use a different email.",
+        "you are already registerd with this email, please choose another!!",
+        400
+      );
+    }
+
+    if (existingUserByPhone) {
+      throw new ErrorHandler(
+        "you are already registerd with this phone, please choose another!!",
         400
       );
     }

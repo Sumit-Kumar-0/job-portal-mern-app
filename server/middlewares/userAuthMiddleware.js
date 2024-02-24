@@ -1,5 +1,6 @@
 import JWT from "jsonwebtoken";
 import userModel from "../models/userModel.js";
+import ErrorHandler from "./errorMiddleware.js";
 
 export const isAuthenticated = async (req, res, next) => {
   try {
@@ -7,7 +8,7 @@ export const isAuthenticated = async (req, res, next) => {
     if (!token) {
       return res
         .status(401)
-        .json({ success: false, message: "User Not Authorized!!!!!!!!" });
+        .json({ success: false, message: "User Not Authorized!!" });
     }
 
     const decoded = JWT.verify(token, process.env.JWT_SECRET_KEY);
@@ -22,9 +23,7 @@ export const isAuthenticated = async (req, res, next) => {
     req.user = user;
     next();
   } catch (error) {
-    return res
-      .status(500)
-      .json({ success: false, message: "Internal Server Error" });
+    console.log(error);
+    next(new ErrorHandler("authentication error! invalid token!!", 500));
   }
 };
-
